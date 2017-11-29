@@ -1,13 +1,22 @@
 version: '3'
 services:
   db:
-    image: postgres
+    image: postgres:9.6
+    volumes:
+      - ./db/pgdata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=notasecret
   web:
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
+      - bundle_cache:/bundle
       - .:/cabinet
     ports:
       - "3000:3000"
     depends_on:
       - db
+volumes:
+  bundle_cache:
+  # mount volume with default driver
