@@ -6,9 +6,23 @@ class DocsController < ApplicationController
     end
 
     def new
+<<<<<<< HEAD
     end
 
     def create
+=======
+        @doc = current_user.docs.build
+    end
+
+    def create
+        @doc = current_user.docs.build(doc_params)
+
+        if @doc.save
+            redirect_to @doc
+        else
+            render 'new'
+        end
+>>>>>>> Association between User and Docs
     end
 
     def edit
