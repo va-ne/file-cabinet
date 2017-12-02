@@ -1,12 +1,4 @@
 class DocsController < ApplicationController
-<<<<<<< HEAD
-    def index
-        @docs = Doc.where(user_id: current_user).order("created_at DESC")
-    end
-
-    def show
-    end
-=======
   before_action :find_doc, only: [:show, :edit, :update, :destroy]
   
   def index
@@ -16,7 +8,6 @@ class DocsController < ApplicationController
   def show
     
   end
->>>>>>> Add styling to Welcome and application.html.erb
 
   def new
     @doc = current_user.docs.build
@@ -50,13 +41,6 @@ class DocsController < ApplicationController
 
   private
 
-<<<<<<< HEAD
-    def find_doc
-    end
-
-    def doc_params
-    end
-=======
   def find_doc
     @doc = Doc.find(params[:id])
   end
@@ -64,5 +48,4 @@ class DocsController < ApplicationController
   def doc_params
     params.require(:doc).permit(:title, :content)
   end
->>>>>>> Add styling to Welcome and application.html.erb
 end
