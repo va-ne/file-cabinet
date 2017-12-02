@@ -1,16 +1,12 @@
 class DocsController < ApplicationController
     def index
+        @docs = Doc.where(user_id: current_user).order("created_at DESC")
     end
 
     def show
     end
 
     def new
-<<<<<<< HEAD
-    end
-
-    def create
-=======
         @doc = current_user.docs.build
     end
 
@@ -22,7 +18,6 @@ class DocsController < ApplicationController
         else
             render 'new'
         end
->>>>>>> Association between User and Docs
     end
 
     def edit
